@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
         config = function()
             require('Comment').setup({
                 toggler = {
-                    line = '<leader>/',
+                    line = '<leader>cc',
                     block = '<leader>bc'
                 },
                 opleader = {
@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Tree
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -39,8 +40,40 @@ return require('packer').startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
+    -- Finder
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
+    -- Syntax
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
+    -- Completion
+    use {
+        'ms-jpq/coq_nvim', branch = 'coq'
+    }
+    use {
+        'ms-jpq/coq.artifacts', branch = 'artifacts'
+    }
+    use {
+        'ms-jpq/coq.thirdparty', branch = '3p'
+    }
+
+    -- Status line
+    use 'beauwilliams/statusline.lua'
+
+    -- Leap
+    use 'ggandor/leap.nvim'
+
     -- Doom one colorscheme
-    use({
+    use {
         'NTBBloodbath/doom-one.nvim',
         setup = function()
             -- Add color to cursor
@@ -76,6 +109,22 @@ return require('packer').startup(function(use)
         config = function()
             vim.cmd("colorscheme doom-one")
         end,
-    })
+    }
+
+    -- Smart column
+    use {
+        'm4xshen/smartcolumn.nvim',
+        setup = function()
+            colorcolumn = {"80", "120"}
+        end
+    }
+
+    use "folke/neodev.nvim"
+
+    use 'jghauser/mkdir.nvim'
+
+    use 'ethanholz/nvim-lastplace'
+
+
 end)
 
