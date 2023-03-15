@@ -55,17 +55,6 @@ return require('packer').startup(function(use)
         end,
     }
 
-    -- Completion
-    use {
-        'ms-jpq/coq_nvim', branch = 'coq'
-    }
-    use {
-        'ms-jpq/coq.artifacts', branch = 'artifacts'
-    }
-    use {
-        'ms-jpq/coq.thirdparty', branch = '3p'
-    }
-
     -- Status line
     use 'beauwilliams/statusline.lua'
 
