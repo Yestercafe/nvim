@@ -6,4 +6,5 @@ require('plugins/init-telescope')
 require('plugins/init-statusline')
 require('plugins/init-lastplace')
 require('plugins/init-smartcolumn')
+require('plugins/init-rust-tools')
 
