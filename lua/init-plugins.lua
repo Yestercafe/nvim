@@ -7,4 +7,5 @@ require('plugins/init-statusline')
 require('plugins/init-lastplace')
 require('plugins/init-smartcolumn')
 require('plugins/init-rust-tools')
+require('plugins/init-mason')
 

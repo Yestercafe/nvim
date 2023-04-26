@@ -9,6 +9,12 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
+    -- mason
+    use {
+        "williamboman/mason.nvim",
+        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    }
+
     -- comment
     use {
         'numToStr/Comment.nvim',
@@ -106,7 +112,7 @@ return require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap'
 
     -- ReScript
-    use 'rescript-lang/vim-rescript'
+    -- use 'rescript-lang/vim-rescript'
 
 end)
 
