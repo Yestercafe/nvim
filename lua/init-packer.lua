@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
         end
     }
 
+    -- Auto pair
+    use 'windwp/nvim-autopairs'
+
     -- Tree
     use {
         'nvim-tree/nvim-tree.lua',
