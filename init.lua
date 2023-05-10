@@ -1,8 +1,12 @@
-require 'preload'
+require 'prerequisites'
+require 'basic'
+require 'helpers'
+require 'keymaps.basic'
 
-require 'init-packer'
-require 'init-plugins'
-require 'init-keymaps'
+require 'lazy-init'
+vim.cmd.colorscheme('habamax')
+
+require 'lsp-init'
 
 require 'postload'
 
