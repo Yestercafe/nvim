@@ -1,6 +1,6 @@
 return {
   {
-    "xiantang/nvim-lspconfig",
+    "neovim/nvim-lspconfig",
     event = "BufRead",
     dependencies = {
       "j-hui/fidget.nvim",
@@ -15,3 +15,4 @@ return {
     end,
   },
 }
+
