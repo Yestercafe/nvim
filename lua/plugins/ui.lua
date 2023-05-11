@@ -6,6 +6,7 @@ return {
       local sl = require('statusline')
       sl.tabline = true
       sl.lsp_diagnostics = true
+      vim.o.showmode = false
     end,
   },
   {
