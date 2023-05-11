@@ -63,8 +63,8 @@ km_n('<leader>fs', '<cmd>w<CR>')
 --
 -- Motion
 --
-km_n('J', ']]')
-km_n('K', '[[')
+km_n('J', ']}')
+km_n('K', '[{')
 km_n('H', '^')
 km_n('L', '$')
 
