@@ -8,5 +8,7 @@ vim.cmd.colorscheme('habamax')
 
 require 'lsp-init'
 
+require 'neovide'
+
 require 'postload'
 
