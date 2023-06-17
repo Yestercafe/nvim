@@ -9,6 +9,13 @@ return {
         direction = 'float',
       }
     end,
-  }
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    config = function()
+
+    end,
+  },
 }
 
