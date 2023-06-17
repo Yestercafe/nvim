@@ -37,4 +37,5 @@ return {
       vim.keymap.set('n', '<leader>fd', '<Cmd>NvimTreeToggle<CR>')
     end
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
