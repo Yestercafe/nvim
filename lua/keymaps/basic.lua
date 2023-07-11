@@ -57,7 +57,7 @@ km_n('<leader>yr', '<cmd>tabrewind<CR>')
 -- Files
 --
 km.set('c', 'w!!', '!suto tee % >/dev/null')
-vim.cmd('nnoremap ff :e ')
+vim.cmd('nnoremap <leader>ff :e ')
 km_n('<leader>fs', '<cmd>w<CR>')
 
 --
