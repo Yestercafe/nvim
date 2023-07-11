@@ -32,6 +32,7 @@
   "statusline.lua": { "branch": "master", "commit": "20ad26912935f91918da9f428761b6d1b651d632" },
   "telescope.nvim": { "branch": "master", "commit": "d77b37f4520e5fc2cf4c74c12e42ed4b589bd367" },
   "toggleterm.nvim": { "branch": "main", "commit": "026dff5e2b504941cf172691561a67ea362596aa" },
+  "typst.vim": { "branch": "main", "commit": "5c1a933d6e8178d8d2596165b1709a7605b26d11" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "vim-wakatime": { "branch": "master", "commit": "02be9238319937e04afea73fd0fc7da5413ee041" },
   "which-key.nvim": { "branch": "main", "commit": "015fdf3e3e052d4a9fee997ca0aa387c2dd3731c" }
