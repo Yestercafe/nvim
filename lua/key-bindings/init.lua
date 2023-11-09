@@ -1,0 +1,2 @@
+require("key-bindings.vanilla")
+
