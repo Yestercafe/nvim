@@ -8,6 +8,7 @@ M.dependencies = {
     "hrsh7th/cmp-cmdline",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    "williamboman/mason-lspconfig.nvim",
 }
 
 M.init = function()
@@ -30,9 +31,9 @@ M.init = function()
         mapping = cmp.mapping.preset.insert({
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<M-Enter>'] = cmp.mapping.complete(),
+            ['<C-.>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
@@ -73,10 +74,20 @@ M.init = function()
     })
 
     -- -- Set up lspconfig.
-    langs = { "lua", "cpp", "rust" }
+    local langs = require("use-langs")
+
+    local ensure_installed = {}
     for _, lang in ipairs(langs) do
-        require("langs." .. lang).setup()
+        local lang_lss = require("langs." .. lang)
+        lang_lss.setup()
+        for _, ls in ipairs(lang_lss.lss) do
+            table.insert(ensure_installed, ls)
+        end
     end
+
+    require("mason-lspconfig").setup {
+        ensure_installed = ensure_installed,
+    }
 end
 
 return M

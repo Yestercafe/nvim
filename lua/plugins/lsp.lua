@@ -10,9 +10,6 @@ M.dependencies = {
 
 M.init = function()
     local lspconfig = require("lspconfig")
-    -- TODO
-    lspconfig.lua_ls.setup{}
-    lspconfig.clangd.setup{}
 end
 
 return M
