@@ -68,7 +68,8 @@ wk.register({
                 end
             end,
             "Lsp server"
-        }
+        },
+        c = { require("smartcolumn").toggle_active, "Smart column" },
     },
     b = {
         name = "+buffer",
@@ -78,7 +79,54 @@ wk.register({
 
 -- prefix two leaders
 wk.register({
-
+    v = {
+        name = "+neovide",
+        ['-'] = {
+            function()
+                local neovide = require("extensions.neovide")
+                if neovide.is_neovide then
+                    neovide.decrease_font_size(1).apply_font_size()
+                else
+                    print("Not Neovide!")
+                end
+            end, "Decrease font size"
+        },
+        ['='] = {
+            function()
+                local neovide = require("extensions.neovide")
+                if neovide.is_neovide then
+                    neovide.increase_font_size(1).apply_font_size()
+                else
+                    print("Not Neovide!")
+                end
+            end, "Increase font size"
+        },
+        ['0'] = {
+            function()
+                local neovide = require("extensions.neovide")
+                if neovide.is_neovide then
+                    neovide.default_font_size().apply_font_size()
+                else
+                    print("Not Neovide!")
+                end
+            end, "Default font size"
+        },
+        d = {
+            function()
+                local neovide = require("extensions.neovide")
+                if neovide.is_neovide then
+                    if neovide.is_demo_mode then
+                        neovide.decrease_font_size(10).apply_font_size()
+                    else
+                        neovide.increase_font_size(10).apply_font_size()
+                    end
+                    neovide.is_demo_mode = not neovide.is_demo_mode
+                else
+                    print("Not Neovide!")
+                end
+            end, "Demo mode"
+        }
+    }
 }, { prefix = "<leader><leader>" })
 
 -- no prefix
@@ -89,7 +137,7 @@ wk.register({
     },
     [']'] = {
         t = { "<CMD>tabn<CR>", "Next tab" },
-        n = { vim.diagnostic.goto_next, "Next diagnostic" },
+        d = { vim.diagnostic.goto_next, "Next diagnostic" },
     },
 })
 

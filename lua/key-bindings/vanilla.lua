@@ -1,10 +1,16 @@
 local km = vim.keymap
 
 -- enhancement of vanilla
-km.set("n", "<", "<<")
-km.set("n", ">", ">>")
-km.set("v", "<", "<gv")
-km.set("v", ">", ">gv")
+km.set("v", "<", "<gv", { noremap = true })
+km.set("v", ">", ">gv", { noremap = true })
+-- TODO unwitty behavior
+km.set("n", "<", "<<", { noremap = true })
+km.set("n", ">", ">>", { noremap = true })
+-- not working
+-- km.set("n", "<Tab>", "<<", { noremap = true })
+-- km.set("n", "<S-Tab>", ">>", { noremap = true })
+-- km.set("v", "<Tab>", "<gv", { noremap = true })
+-- km.set("v", "<S-Tab>", ">gv", { noremap = true })
 
 km.set("n", "n", "nzz")
 km.set("n", "N", "Nzz")
@@ -29,9 +35,9 @@ km.set({"n", "i", "v"}, "<C-a>", "^")
 km.set({"n", "i", "v"}, "<C-e>", "$")
 km.set({"n", "i", "v"}, "<C-p>", "<up>")
 km.set({"n", "i", "v"}, "<C-n>", "<down>")
-km.set({"n", "i", "v"}, "<C-b>", "<left>")      -- use C-u instead
-km.set({"n", "i", "v"}, "<C-f>", "<right>")     -- use C-d instead
+km.set({"n", "i", "v"}, "<C-b>", "<left>")        -- use C-u instead
+km.set({"n", "i", "v"}, "<C-f>", "<right>")       -- use C-d instead
 km.set({"n", "i", "v"}, "<M-b>", "b")
 km.set({"n", "i", "v"}, "<M-f>", "w")
-km.set({"n", "i", "v"}, "<M-x>", "<esc>:")
+km.set({"n", "i", "v"}, "<M-x>", "<esc>:Cafe ")   -- custom stuffs
 

@@ -1,2 +1,4 @@
 .DS_Store
+neovide_backtraces.log
+.luarc.json
 
