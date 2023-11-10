@@ -6,7 +6,17 @@ M.config = function()
         options = {
             icons_enabled = true,
             theme = "auto",
-        }
+        },
+        sections = {
+            lualine_b = {
+                "branch",
+                "diff",
+                {
+                    "diagnostics",
+                    sources = { "nvim_lsp", "nvim_diagnostic" },
+                },
+            },
+        },
     }
 end
 

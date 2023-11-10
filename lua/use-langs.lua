@@ -1,7 +1,7 @@
 local L = {
     "lua",
     "cpp",
-    "rust",
+    -- "rust",   -- set by rust-tools
     "python"
 }
 

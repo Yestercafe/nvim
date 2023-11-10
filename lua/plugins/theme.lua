@@ -1,8 +1,8 @@
-local M = { "catppuccin/nvim" }
+local M = { "ellisonleao/gruvbox.nvim" }
 local g = vim.g
 
 M.init = function()
-    vim.cmd.colorscheme("catppuccin-mocha")
+    vim.cmd.colorscheme("gruvbox")
 end
 
 return M
