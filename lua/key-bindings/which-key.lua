@@ -139,5 +139,16 @@ wk.register({
         t = { "<CMD>tabn<CR>", "Next tab" },
         d = { vim.diagnostic.goto_next, "Next diagnostic" },
     },
+    g = {
+        h = { vim.lsp.buf.hover, "LSP: hover" },
+        d = { "<CMD>vs<CR><cmd>lua vim.lsp.buf.definition()<CR>", "LSP: peek definition" },
+        D = { vim.lsp.buf.definition, "LSP: go to definition" },
+        i = { "<CMD>vs<CR><cmd>lua vim.lsp.buf.implementation()<CR>", "LSP: peek implementation" },
+        I = { vim.lsp.buf.implementation, "LSP: go to implementation" },
+        t = { vim.lsp.buf.type_definition, "LSP: go to type definition" },
+        H = { vim.lsp.buf.signature_help, "LSP: signature help" },
+        r = { vim.lsp.buf.references, "LSP: get references" },
+        ['.'] = { vim.lsp.buf.code_action, "LSP: code action" },
+    }
 })
 
