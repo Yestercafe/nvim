@@ -1,4 +1,10 @@
+local g = vim.g
 local o = vim.o
+local km = vim.keymap
+
+g.mapleader = " "
+
+km.set('i', 'kj', '<Esc>')
 
 o.compatible = false
 o.backup = false
@@ -17,16 +23,16 @@ o.foldmethod = 'indent'
 o.foldlevel = 99
 o.autochdir = true
 o.backspace = 'indent,eol,start'
-o.list = false
 o.visualbell = true
 o.errorbells = false
 o.t_vb = ''
 o.mouse = 'a'
-vim.o.listchars = 'extends:#,precedes:#,tab:▸ ,trail:▫,eol:¬'
+o.list = false
+o.listchars = 'extends:#,precedes:#,tab:▸ ,trail:▫,eol:¬'
 
-o.tabstop = 2
-o.shiftwidth = 2
-o.softtabstop = 2
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
 o.expandtab = true
 o.smartindent = true
 
@@ -34,4 +40,6 @@ o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
 o.smartcase = true
+
+require("extensions.neovide")
 

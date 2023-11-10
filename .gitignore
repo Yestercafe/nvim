@@ -1,4 +1,4 @@
-/plugin
 .DS_Store
-lua/.luarc.json
+neovide_backtraces.log
+.luarc.json
 
