@@ -41,5 +41,7 @@ o.incsearch = true
 o.ignorecase = true
 o.smartcase = true
 
+o.scl = "yes"
+
 require("extensions.neovide")
 

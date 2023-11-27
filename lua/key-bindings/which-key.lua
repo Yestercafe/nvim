@@ -5,7 +5,7 @@ wk.register({
     f = {
         name = "+file",
         s = { "<CMD>w<CR>", "Save file" },
-        f = { "<CMD>Telescope find_files<CR>", "Open file" },
+        f = { "<CMD>Telescope find_files cwd=.<CR>", "Open file" },
         g = { "<CMD>Telescope live_grep<CR>", "Live grep" },
         d = { "<CMD>NvimTreeToggle<CR>", "Nvim tree" }
     },
