@@ -22,7 +22,7 @@ M.commands = {
         end,
     },
     cmr = function()
-        vim.api.nvim_command(":!cmake -B./_build && make -C ./_build && echo \"===== output =====\" && ./_build/$(cat CMakeLists.txt | grep add_executable | sed \"s/\\s*add_executable\\s*(\\s*//g\" | cut -d \" \" -f 1)")
+        vim.api.nvim_command(":!cmake -B./build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make -C ./build && echo \"===== output =====\" && ./build/$(cat CMakeLists.txt | grep add_executable | sed \"s/\\s*add_executable\\s*(\\s*//g\" | cut -d \" \" -f 1)")
     end,
     cm = {
         clean = function()
