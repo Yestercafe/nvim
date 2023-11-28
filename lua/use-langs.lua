@@ -1,7 +1,7 @@
 local L = {
     "lua",
     "cpp",
-    -- "rust",   -- set by rust-tools
+    "rust",
     "python",
     "cmake"
 }
