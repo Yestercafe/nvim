@@ -80,8 +80,15 @@ M.init = function()
     for _, lang in ipairs(langs) do
         local lang_lss = require("langs." .. lang)
         lang_lss.setup()
-        for _, ls in ipairs(lang_lss.lss) do
-            table.insert(ensure_installed, ls)
+        if lang_lss.lss ~= nil then
+            for _, ls in ipairs(lang_lss.lss) do
+                table.insert(ensure_installed, ls)
+            end
+        end
+        if lang_lss.debugger ~= nil then
+            for _, dbgr in ipairs(lang_lss.debuggers) do
+                table.insert(ensure_installed, dbgr)
+            end
         end
     end
 

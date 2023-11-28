@@ -10,5 +10,8 @@ M.setup = function()
     end
 end
 
+M.dap_setup = function()
+end
+
 return M
 

@@ -70,11 +70,36 @@ wk.register({
             "Lsp server"
         },
         c = { require("smartcolumn").toggle_active, "Smart column" },
+        a = { require("dapui").toggle, "Dap UI" }
     },
     b = {
         name = "+buffer",
         b = { "<CMD>Telescope buffers<CR>", "Buffers" }
     },
+    d = {
+        name = "+dap",
+        b = { require("dap").toggle_breakpoint, "Toggle breakpoing" },
+        c = {
+            function()
+                require("dap").continue()
+                require("dapui").open()
+            end,
+            "Continue"
+        },
+        o = { require("dap").step_over, "Step over" },
+        i = { require("dap").step_into, "Step into" },
+        u = { require("dap").step_out, "Step out" },
+        [';'] = { require("dap").repl.open, "REPL open" },
+        s = {
+            function()
+                require("dap").close()
+                require("dapui").close()
+            end,
+            "Stop"
+        },
+        -- S = { require("dap").terminate, "Terminate" },
+        r = { require("dap").restart, "Restart" },
+    }
 }, { prefix = "<leader>" })
 
 -- prefix two leaders

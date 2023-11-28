@@ -10,5 +10,13 @@ M.setup = function()
     end
 end
 
+M.dap_setup = function()
+    local imported = require("langs.imported")
+    local dap = imported.dap
+
+    M.debuggers = { "DEBUGGER_NAME" }
+
+end
+
 return M
 
