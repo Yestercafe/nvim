@@ -19,7 +19,7 @@ M.dap_setup = function()
     dap.adapters.cppdbg = {
         id = "cppdbg",
         type = "executable",
-        command = "/home/ivan/.local/bin/OpenDebugAD7",
+        command = "OpenDebugAD7",
     }
     dap.adapters.codelldb = {
         id = "codelldb",

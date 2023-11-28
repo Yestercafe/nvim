@@ -85,11 +85,6 @@ M.init = function()
                 table.insert(ensure_installed, ls)
             end
         end
-        if lang_lss.debugger ~= nil then
-            for _, dbgr in ipairs(lang_lss.debuggers) do
-                table.insert(ensure_installed, dbgr)
-            end
-        end
     end
 
     require("mason-lspconfig").setup {
