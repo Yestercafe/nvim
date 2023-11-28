@@ -24,10 +24,16 @@ M.commands = {
     cmr = function()
         vim.api.nvim_command(":!cmake -B./build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make -C ./build && echo \"===== output =====\" && ./build/$(cat CMakeLists.txt | grep add_executable | sed \"s/\\s*add_executable\\s*(\\s*//g\" | cut -d \" \" -f 1)")
     end,
-    cm = {
+    cmake = {
         clean = function()
-            vim.api.nvim_command(":!rm -rf ./_build")
-        end
+            vim.api.nvim_command(":!rm -rf ./build")
+        end,
+        run = function()
+            vim.api.nvim_command(":!cmake -B./build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make -C ./build && echo \"===== output =====\" && ./build/$(cat CMakeLists.txt | grep add_executable | sed \"s/\\s*add_executable\\s*(\\s*//g\" | cut -d \" \" -f 1)")
+        end,
+        build = function()
+            vim.api.nvim_command(":!cmake -B./build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make -C ./build")
+        end,
     }
 }
 
