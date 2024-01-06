@@ -41,3 +41,7 @@ km.set({"n", "i", "v"}, "<M-b>", "b")
 km.set({"n", "i", "v"}, "<M-f>", "w")
 km.set({"n", "i", "v"}, "<M-x>", "<esc>:Cafe ")   -- custom stuffs
 
+-- nvim-various-textobjs
+km.set({'o', 'x'}, "a<leader>w", "<cmd>lua require('various-textobjs').subword('outer')<CR>")
+km.set({'o', 'x'}, "i<leader>w", "<cmd>lua require('various-textobjs').subword('inner')<CR>")
+

@@ -99,7 +99,7 @@ wk.register({
         },
         -- S = { require("dap").terminate, "Terminate" },
         r = { require("dap").restart, "Restart" },
-    }
+    },
 }, { prefix = "<leader>" })
 
 -- prefix two leaders
@@ -174,6 +174,15 @@ wk.register({
         H = { vim.lsp.buf.signature_help, "LSP: signature help" },
         r = { vim.lsp.buf.references, "LSP: get references" },
         ['.'] = { vim.lsp.buf.code_action, "LSP: code action" },
-    }
+    },
+    s = {
+        name = "+search",
+        w = { '<CMD>HopWordCurrentLine<CR>', 'Any word' },
+        s = { '<CMD>HopWord<CR>', 'Any word' },
+        l = { '<CMD>HopLine<CR>', 'Any line' },
+        a = { '<CMD>HopAnywhere<CR>', 'Anywhere' },
+        f = { '<CMD>HopChar1<CR>', '1 char' },
+        F = { '<CMD>HopChar2<CR>', '2 chars' },
+    },
 })
 
