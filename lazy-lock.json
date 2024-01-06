@@ -28,6 +28,7 @@
   "nvim-lastplace": { "branch": "main", "commit": "75a2b78bdbbd20467d499defceb5b20c0967a1ca" },
   "nvim-lspconfig": { "branch": "master", "commit": "32f0c0465ac3ee53a1a9c0f72602a7b9cecb31d3" },
   "nvim-spider": { "branch": "main", "commit": "dc371a116041c49ae6d3813f6e1722c2dcdabdcf" },
+  "nvim-surround": { "branch": "main", "commit": "703ec63aa798e5e07d309b35e42def34bebe0174" },
   "nvim-tree.lua": { "branch": "master", "commit": "270c95556cad96d18ca547d86ae65927334b108b" },
   "nvim-treesitter": { "branch": "master", "commit": "957aefe8148902897aad877e508ae7e747f155fc" },
   "nvim-various-textobjs": { "branch": "main", "commit": "0533506d983fb98c4b14e3f5dfd5ce4f3c87c354" },
@@ -37,6 +38,7 @@
   "smartcolumn.nvim": { "branch": "main", "commit": "613f789b3906abd3ca00870dea22df3ba25ad9b2" },
   "telescope.nvim": { "branch": "master", "commit": "d77b37f4520e5fc2cf4c74c12e42ed4b589bd367" },
   "toggleterm.nvim": { "branch": "main", "commit": "026dff5e2b504941cf172691561a67ea362596aa" },
+  "vim-expand-region": { "branch": "master", "commit": "966513543de0ddc2d673b5528a056269e7917276" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "vim-wakatime": { "branch": "master", "commit": "02be9238319937e04afea73fd0fc7da5413ee041" },
   "which-key.nvim": { "branch": "main", "commit": "015fdf3e3e052d4a9fee997ca0aa387c2dd3731c" }
