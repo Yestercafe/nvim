@@ -150,8 +150,20 @@ wk.register({
                     print("Not Neovide!")
                 end
             end, "Demo mode"
-        }
-    }
+        },
+        z = {
+            function()
+                require('extensions.neovide').decrease_transparency()
+            end,
+            "Increase opacity"
+        },
+        c = {
+            function()
+                require('extensions.neovide').increase_transparency()
+            end,
+            "Decrease opacity"
+        },
+    },
 }, { prefix = "<leader><leader>" })
 
 -- no prefix
