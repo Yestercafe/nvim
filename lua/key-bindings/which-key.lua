@@ -194,6 +194,13 @@ wk.register({
             end,
             "LSP: rename identifier"
         },
+        f = {
+            vim.lsp.buf.format, "Reformat buffer"
+        },
+        m = {
+            name = "+more",
+            f = { "gf", "Goto the file under cursor", noremap = true },
+        },
     },
     s = {
         name = "+search",
