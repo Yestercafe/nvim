@@ -186,6 +186,12 @@ wk.register({
         H = { vim.lsp.buf.signature_help, "LSP: signature help" },
         r = { vim.lsp.buf.references, "LSP: get references" },
         ['.'] = { vim.lsp.buf.code_action, "LSP: code action" },
+        R = {
+            function()
+                vim.lsp.buf.rename(vim.fn.input('Rename to: '))
+            end,
+            "LSP: rename identifier"
+        },
     },
     s = {
         name = "+search",
