@@ -30,15 +30,13 @@ km.set("i", "<Esc><BS>", "<C-w>")
 km.set("n", "s", "<NOP>")
 
 -- compatible with Emacs
-km.set({"n", "i", "v"}, "<C-g>", "<Esc>")
-km.set({"n", "i", "v"}, "<C-a>", "^")
-km.set({"n", "i", "v"}, "<C-e>", "$")
-km.set({"n", "i", "v"}, "<C-p>", "<up>")
-km.set({"n", "i", "v"}, "<C-n>", "<down>")
-km.set({"n", "i", "v"}, "<C-b>", "<left>")        -- use C-u instead
-km.set({"n", "i", "v"}, "<C-f>", "<right>")       -- use C-d instead
-km.set({"n", "i", "v"}, "<M-b>", "b")
-km.set({"n", "i", "v"}, "<M-f>", "w")
+km.set("i", "<C-g>", "<Esc>")
+km.set("i", "<C-a>", "<home>")
+km.set("i", "<C-e>", "<end>")
+km.set("i", "<C-p>", "<up>")
+km.set("i", "<C-n>", "<down>")
+km.set("i", "<C-b>", "<left>")
+km.set("i", "<C-f>", "<right>")
 km.set({"n", "i", "v"}, "<M-x>", "<esc>:Cafe ")   -- custom stuffs
 
 -- nvim-various-textobjs
