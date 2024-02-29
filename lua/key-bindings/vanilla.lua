@@ -45,3 +45,6 @@ km.set({"n", "i", "v"}, "<M-x>", "<esc>:Cafe ")   -- custom stuffs
 km.set({'o', 'x'}, "a<leader>w", "<cmd>lua require('various-textobjs').subword('outer')<CR>")
 km.set({'o', 'x'}, "i<leader>w", "<cmd>lua require('various-textobjs').subword('inner')<CR>")
 
+-- no highlight
+km.set('n', "<leader><CR>", "<cmd>nohl<CR>")
+
