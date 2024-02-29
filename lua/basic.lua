@@ -25,7 +25,7 @@ o.autochdir = true
 o.backspace = 'indent,eol,start'
 o.visualbell = true
 o.errorbells = false
-o.t_vb = ''
+-- o.t_vb = ''
 o.mouse = 'a'
 o.list = false
 o.listchars = 'extends:#,precedes:#,tab:▸ ,trail:▫,eol:¬'
@@ -42,6 +42,8 @@ o.ignorecase = true
 o.smartcase = true
 
 o.scl = "yes"
+
+o.fileencodings="utf-8,gb18030,gbk,gb2312"
 
 require("extensions.neovide")
 
