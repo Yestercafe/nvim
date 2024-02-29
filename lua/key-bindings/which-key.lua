@@ -100,6 +100,8 @@ wk.register({
         -- S = { require("dap").terminate, "Terminate" },
         r = { require("dap").restart, "Restart" },
     },
+    y = { '"+y', "Yank to system clipboard" },
+    p = { '"+p', "Paste from system clipboard" },
 }, { prefix = "<leader>" })
 
 -- prefix two leaders
