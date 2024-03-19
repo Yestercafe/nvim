@@ -1,6 +1,8 @@
 local M = { "rcarriga/nvim-dap-ui" }
 
-M.dependencies = { "mfussenegger/nvim-dap" }
+M.dependencies = {
+    { "mfussenegger/nvim-dap", dependencies = 'nvim-neotest/nvim-nio' }
+}
 M.config = function()
     local langs = require("use-langs")
 
@@ -16,4 +18,3 @@ M.init = function()
 end
 
 return M
-
