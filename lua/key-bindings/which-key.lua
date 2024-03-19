@@ -28,11 +28,9 @@ wk.register({
         ['_'] = { "<C-w>_", "Max out height" },
         ['|'] = { "<C-w>_", "Max out width" },
         m = { "<C-w>_<C-w>|", "Maximize the window" },
-        q = { "<C-w>q", "Close the window" },
+        q = { "<CMD>bdelete<CR>", "Close the buffer" },
         t = { "<CMD>tabe<CR>", "New tab" },
         T = { "<C-w>T", "As a new tab" },
-        ['['] = { "<CMD>tabp<CR>", "Previous tab" },
-        [']'] = { "<CMD>tabn<CR>", "Next tab" },
         r = { "<CMD>tabrewind<CR>", "Rewind the tab" },
 
         -- tmux-like bindings
@@ -171,11 +169,13 @@ wk.register({
 -- no prefix
 wk.register({
     ['['] = {
-        t = { "<CMD>tabp<CR>", "Previous tab" },
+        w = { "<CMD>tabp<CR>", "Previous tab" },
+        b = { "<CMD>BufferLineCyclePrev<CR>", "Previous buffer" },
         d = { vim.diagnostic.goto_prev, "Previous diagnostic" },
     },
     [']'] = {
-        t = { "<CMD>tabn<CR>", "Next tab" },
+        w = { "<CMD>tabn<CR>", "Next tab" },
+        b = { "<CMD>BufferLineCycleNext<CR>", "Next tab" },
         d = { vim.diagnostic.goto_next, "Next diagnostic" },
     },
     g = {
