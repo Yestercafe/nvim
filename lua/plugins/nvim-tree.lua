@@ -4,7 +4,8 @@ M.init = function()
     require("nvim-tree").setup {
         view = {
             float = {
-                enable = true,
+                enable = false,
+                quit_on_focus_loss = false,
             },
         },
     }

@@ -7,7 +7,32 @@ wk.register({
         s = { "<CMD>w<CR>", "Save file" },
         f = { "<CMD>Telescope find_files cwd=.<CR>", "Open file" },
         g = { "<CMD>Telescope live_grep<CR>", "Live grep" },
-        d = { "<CMD>NvimTreeToggle<CR>", "Nvim tree" }
+        d = {
+            function()
+                function is_nvim_tree_window()
+                    local focused_win = vim.fn.winnr()
+                    local wininfo = vim.api.nvim_list_wins()
+
+                    for _, winid in ipairs(wininfo) do
+                        local bufnr = vim.api.nvim_win_get_buf(winid)
+                        local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+                        if vim.api.nvim_win_get_number(winid) == focused_win and filetype == 'NvimTree' then
+                            return true
+                        end
+                    end
+
+                    return false
+                end
+
+                -- if require('nvim-tree.api').tree.is_visible() and not is_nvim_tree_window() then
+                --     require('nvim-tree.api').tree.focus()
+                -- else
+                --     require('nvim-tree.api').tree.toggle()
+                -- end
+
+                require('nvim-tree.api').tree.toggle()
+            end
+            , "Nvim tree" }
     },
     q = {
         name = "+quit",
@@ -98,8 +123,8 @@ wk.register({
         -- S = { require("dap").terminate, "Terminate" },
         r = { require("dap").restart, "Restart" },
     },
-    y = { '"+y', "Yank to system clipboard", mode = {"n", "v"} },
-    p = { '"+p', "Paste from system clipboard", mode = {"n", "v"} },
+    y = { '"+y', "Yank to system clipboard", mode = { "n", "v" } },
+    p = { '"+p', "Paste from system clipboard", mode = { "n", "v" } },
 }, { prefix = "<leader>" })
 
 -- prefix two leaders
@@ -212,4 +237,3 @@ wk.register({
         F = { '<CMD>HopChar2<CR>', '2 chars' },
     },
 })
-
