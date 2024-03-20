@@ -11,7 +11,13 @@ M.init = function()
                     filetype = "NvimTree",
                     text = "NvimTree",
                     highlight = "Directory",
-                    separator = true -- use a "true" to enable the default, or set your own character
+                    separator = true
+                },
+                {
+                    filetype = "Outline",
+                    text = "Outline",
+                    -- highlight = "Directory",
+                    separator = true
                 }
             }
         }

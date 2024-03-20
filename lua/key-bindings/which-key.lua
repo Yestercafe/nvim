@@ -226,6 +226,7 @@ wk.register({
             name = "+more",
             f = { "gf", "Goto the file under cursor", noremap = true },
         },
+        o = { '<CMD>Outline<CR>', "Toggle outline" }
     },
     s = {
         name = "+search",

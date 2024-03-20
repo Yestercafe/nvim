@@ -36,6 +36,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "957aefe8148902897aad877e508ae7e747f155fc" },
   "nvim-various-textobjs": { "branch": "main", "commit": "0533506d983fb98c4b14e3f5dfd5ce4f3c87c354" },
   "nvim-web-devicons": { "branch": "master", "commit": "986875b7364095d6535e28bd4aac3a9357e91bbe" },
+  "outline.nvim": { "branch": "main", "commit": "bdfd2da90e9a7686d00e55afa9f772c4b6809413" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
   "rust-tools.nvim": { "branch": "master", "commit": "71d2cf67b5ed120a0e31b2c8adb210dd2834242f" },
   "smartcolumn.nvim": { "branch": "main", "commit": "613f789b3906abd3ca00870dea22df3ba25ad9b2" },
