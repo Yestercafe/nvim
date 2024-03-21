@@ -1,2 +1,0 @@
-require("key-bindings.vanilla")
-

@@ -1,5 +1,2 @@
-require("basic")
-require("lazy-init")
-require("key-bindings")
-require("extensions")
-
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

@@ -1,4 +1,8 @@
-.DS_Store
-neovide_backtraces.log
-.luarc.json
-
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
