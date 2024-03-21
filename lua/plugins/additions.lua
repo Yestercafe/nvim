@@ -18,5 +18,4 @@ return {
   { import = "lazyvim.plugins.extras.editor.leap" },
   { import = "lazyvim.plugins.extras.editor.harpoon2" },
   { import = "lazyvim.plugins.extras.editor.mini-files" },
-  { import = "lazyvim.plugins.extras.editor.outline" },
 }
