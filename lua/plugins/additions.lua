@@ -2,7 +2,7 @@ return {
   { import = "lazyvim.plugins.extras.vscode" },
 
   -- { import = "lazyvim.plugins.extras.ui.edgy" },
-  { import = "lazyvim.plugins.extras.ui.mini-starter" },
+  -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
   { import = "lazyvim.plugins.extras.coding.yanky" },
 
