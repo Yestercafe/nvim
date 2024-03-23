@@ -11,6 +11,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.haskell" },
   { import = "lazyvim.plugins.extras.lang.python" },
   { import = "lazyvim.plugins.extras.lang.rust" },
+  { import = "lazyvim.plugins.extras.lang.ruby" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
   { import = "lazyvim.plugins.extras.dap.core" },
 
