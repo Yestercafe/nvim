@@ -8,6 +8,12 @@ local unmap = vim.keymap.del
 -- ESC
 map("i", "kj", "<ESC>")
 
+-- Motion
+unmap("n", "H")
+unmap("n", "L")
+map({ "n", "v" }, "H", "^")
+map({ "n", "v" }, "L", "$")
+
 -- Alt
 map("i", "<esc><bs>", "<C-w>")
 
@@ -26,3 +32,6 @@ map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "Go to right window", r
 
 -- Save file
 map("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
+
+-- LSP hover
+map("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
