@@ -35,3 +35,7 @@ map("n", "<leader>fs", "<cmd>w<cr>", { desc = "Save file" })
 
 -- LSP hover
 map("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
+
+-- Split
+map("n", "<leader>w2", ":sp<cr>", { desc = "Split" })
+map("n", "<leader>w3", ":vs<cr>", { desc = "Vsplit" })
