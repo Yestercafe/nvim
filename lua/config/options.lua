@@ -5,3 +5,5 @@
 local opt = vim.opt
 
 opt.shiftwidth = 4
+
+LazyVim.format.toggle()
