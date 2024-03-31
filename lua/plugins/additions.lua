@@ -5,6 +5,7 @@ return {
   -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
   { import = "lazyvim.plugins.extras.coding.yanky" },
+  { import = "lazyvim.plugins.extras.coding.native_snippets" },
 
   { import = "lazyvim.plugins.extras.lang.clangd" },
   { import = "lazyvim.plugins.extras.lang.cmake" },
