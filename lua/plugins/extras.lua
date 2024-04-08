@@ -32,4 +32,15 @@ return {
     },
   },
   { "terryma/vim-expand-region" },
+  {
+    "vim-scripts/DoxygenToolkit.vim",
+    keys = {
+      {
+        "<leader>cD",
+        "<cmd>Dox<CR>",
+        mode = { "n" },
+        desc = "Doxygen docs",
+      },
+    },
+  },
 }
