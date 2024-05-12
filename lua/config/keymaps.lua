@@ -6,7 +6,7 @@ local map = vim.keymap.set
 local unmap = vim.keymap.del
 
 -- ESC
-map("i", "kj", "<ESC>")
+-- map("i", "kj", "<ESC>")
 
 -- Motion
 unmap("n", "H")
