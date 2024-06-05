@@ -45,3 +45,9 @@ map("n", "<leader>cL", "<cmd>LspRestart<cr>", { desc = "Reload LSP" })
 map("n", "<leader>cp", "<cmd>LspStop<cr>", { desc = "Stop LSP" })
 map("n", "<leader>ci", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
 
+-- Window
+map("n", "<leader>wm", "<C-w>|<C-w>_", { desc = "Maximize window" })
+map("n", "<leader>w|", "<C-w>|", { desc = "Maximize window width" })
+map("n", "<leader>w_", "<C-w>_", { desc = "Maximize window height" })
+map("n", "<leader>w=", "<C-w>=", { desc = "Divide windows equally" })
+
