@@ -40,7 +40,8 @@ map("n", "gh", vim.lsp.buf.hover, { desc = "Hover" })
 map("n", "<leader>w2", ":sp<cr>", { desc = "Split" })
 map("n", "<leader>w3", ":vs<cr>", { desc = "Vsplit" })
 
--- LSP rename
-map("n", "gR", function()
-  vim.lsp.buf.rename(vim.fn.input("Rename to: "))
-end, { desc = "LSP rename" })
+-- LSP restart
+map("n", "<leader>cL", "<cmd>LspRestart<cr>", { desc = "Reload LSP" })
+map("n", "<leader>cp", "<cmd>LspStop<cr>", { desc = "Stop LSP" })
+map("n", "<leader>ci", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+
