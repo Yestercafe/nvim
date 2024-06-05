@@ -24,4 +24,5 @@ return {
       delete_check_events = "TextChanged",
     },
   },
+  { "echasnovski/mini.surround", enabled = false },
 }
