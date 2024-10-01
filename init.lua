@@ -194,6 +194,8 @@ vim.keymap.set('n', '<leader>fs', ':w<CR>', { desc = 'Save buffer' })
 
 vim.keymap.set('n', '<leader>qq', ':q<CR>', { desc = 'Quit buffer' })
 
+vim.keymap.set('i', '<Esc><BS>', '<C-w>')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -321,6 +323,7 @@ require('lazy').setup({
         { '<leader>q', group = 'Quit' },
         { '<leader>w', group = 'Window' },
         { '<leader>t', group = 'Toggle' },
+        { '<leader>u', group = 'UI' },
         { '<leader>p', group = 'Project' },
         { '<leader>a', group = 'Action' },
         { '<leader>s', group = 'Search' },
@@ -937,6 +940,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 
   require 'kickstart.plugins.lazygit',
+  require 'kickstart.plugins.notify',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
