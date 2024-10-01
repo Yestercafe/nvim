@@ -157,7 +157,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
-local lazy = {}
+-- [[ option variables ]]
+local options = {
+  auto_format = true,
+}
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -207,6 +210,12 @@ vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Split Window (Vertical)' }
 vim.keymap.set('n', '<leader>w3', '<C-w>v', { desc = 'Split Window (Horizontal)' })
 vim.keymap.set('n', '<leader>w\\', '<C-w>v', { desc = 'Split Window (Horizontal)' })
 vim.keymap.set('n', '<leader>wq', ':q<CR>', { desc = 'Close Window', silent = true })
+
+-- UI
+vim.keymap.set('n', '<leader>uf', function()
+  options.auto_format = not options.auto_format
+  vim.notify(string.format('Auto format set to `%s`', tostring(options.auto_format)), 'info')
+end, { desc = 'Toggle auto format', silent = true })
 
 -- Terminal
 local lazy_terminal = require 'lazy.components.terminal'
@@ -697,8 +706,8 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
+    -- event = { 'BufWritePre' },
+    -- cmd = { 'ConformInfo' },
     keys = {
       {
         '<leader>cf',
@@ -736,6 +745,17 @@ require('lazy').setup({
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('Conform_auto_format', { clear = true }),
+        desc = 'Conform auto format when saving',
+        callback = function()
+          if options.auto_format then
+            require('conform').format { async = true, lsp_format = 'fallback' }
+          end
+        end,
+      })
+    end,
   },
 
   { -- Autocompletion
