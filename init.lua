@@ -190,11 +190,21 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>fs', ':w<CR>', { desc = 'Save buffer' })
+-- Save current buffer
+vim.keymap.set('n', '<leader>fs', ':w<CR>', { desc = 'Save buffer', silent = true })
 
-vim.keymap.set('n', '<leader>qq', ':q<CR>', { desc = 'Quit buffer' })
+-- Quit buffer
+vim.keymap.set('n', '<leader>qq', ':q<CR>', { desc = 'Quit buffer', silent = true })
 
+-- Insert mode: Alt-backspace means C-w
 vim.keymap.set('i', '<Esc><BS>', '<C-w>')
+
+-- Window management
+vim.keymap.set('n', '<leader>w2', '<C-w>s', { desc = 'Split Window (Vertical)' })
+vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Split Window (Vertical)' })
+vim.keymap.set('n', '<leader>w3', '<C-w>v', { desc = 'Split Window (Horizontal)' })
+vim.keymap.set('n', '<leader>w\\', '<C-w>v', { desc = 'Split Window (Horizontal)' })
+vim.keymap.set('n', '<leader>wq', ':q<CR>', { desc = 'Close Window', silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -427,7 +437,7 @@ require('lazy').setup({
           winblend = 10,
           previewer = false,
         })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      end, { desc = 'Fuzzily search' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -787,9 +797,9 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
@@ -927,7 +937,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
@@ -941,6 +951,7 @@ require('lazy').setup({
 
   require 'kickstart.plugins.lazygit',
   require 'kickstart.plugins.notify',
+  require 'kickstart.plugins.bufferline',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
