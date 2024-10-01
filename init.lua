@@ -157,6 +157,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+local lazy = {}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -205,6 +207,16 @@ vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Split Window (Vertical)' }
 vim.keymap.set('n', '<leader>w3', '<C-w>v', { desc = 'Split Window (Horizontal)' })
 vim.keymap.set('n', '<leader>w\\', '<C-w>v', { desc = 'Split Window (Horizontal)' })
 vim.keymap.set('n', '<leader>wq', ':q<CR>', { desc = 'Close Window', silent = true })
+
+-- Terminal
+local lazy_terminal = require 'lazy.components.terminal'
+lazy_terminal.setup()
+vim.keymap.set('n', '<leader>ft', function()
+  lazy_terminal.open()
+end, { desc = 'Terminal' })
+vim.keymap.set('n', '<leader>tt', function()
+  lazy_terminal.open()
+end, { desc = 'Terminal' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
