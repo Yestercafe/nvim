@@ -94,7 +94,8 @@ return {
       },
       setup = {
         clangd = function(_, opts)
-          local clangd_ext_opts = LazyVim.opts 'clangd_extensions.nvim'
+          -- local clangd_ext_opts = LazyVim.opts 'clangd_extensions.nvim'
+          local clangd_ext_opts = {}
           require('clangd_extensions').setup(vim.tbl_deep_extend('force', clangd_ext_opts or {}, { server = opts }))
           return false
         end,
@@ -158,11 +159,11 @@ return {
   },
   {
     'Civitasv/cmake-tools.nvim',
+    lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
     config = function()
-      local osys = require 'cmake-tools.osys'
       require('cmake-tools').setup {
         cmake_regenerate_on_save = true,
         cmake_build_directory = 'build/',

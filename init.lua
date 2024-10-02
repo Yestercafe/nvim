@@ -524,6 +524,8 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           lsp_map('gD', vim.lsp.buf.declaration, 'goto declaration')
 
+          lsp_map('gh', vim.lsp.buf.hover, 'hover')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -926,6 +928,7 @@ require('lazy').setup({
   require 'kickstart.plugins.dashboard',
 
   { import = 'lazy.components.clangd' },
+  { import = 'lazy.components.rust' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
