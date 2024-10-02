@@ -985,6 +985,8 @@ require('lazy').setup({
   require 'kickstart.plugins.bufferline',
   require 'kickstart.plugins.persistence',
   require 'kickstart.plugins.dashboard',
+
+  { import = 'lazy.components.clangd' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

@@ -66,6 +66,7 @@ return {
     --     vim.notify = require 'notify'
     --   end)
     -- end
+
     vim.notify = require 'notify'
   end,
 }
