@@ -205,11 +205,10 @@ vim.keymap.set('n', '<leader>qq', ':q<CR>', { desc = 'Quit buffer', silent = tru
 vim.keymap.set('i', '<Esc><BS>', '<C-w>')
 
 -- Window management
-vim.keymap.set('n', '<leader>w2', '<C-w>s', { desc = 'Split Window (Vertical)' })
-vim.keymap.set('n', '<leader>w-', '<C-w>s', { desc = 'Split Window (Vertical)' })
-vim.keymap.set('n', '<leader>w3', '<C-w>v', { desc = 'Split Window (Horizontal)' })
-vim.keymap.set('n', '<leader>w\\', '<C-w>v', { desc = 'Split Window (Horizontal)' })
-vim.keymap.set('n', '<leader>wq', ':q<CR>', { desc = 'Close Window', silent = true })
+vim.keymap.set('n', '<C-w>2', '<C-w>s', { desc = 'Split window' })
+vim.keymap.set('n', '<C-w>_', '<C-w>s', { desc = 'Split window' })
+vim.keymap.set('n', '<C-w>3', '<C-w>v', { desc = 'Split window vertically)' })
+vim.keymap.set('n', '<C-w>|', '<C-w>v', { desc = 'Split window vertically' })
 
 -- UI
 vim.keymap.set('n', '<leader>uf', function()
@@ -352,7 +351,7 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>q', group = 'Quit' },
-        { '<leader>w', group = 'Window' },
+        { '<leader>w', group = 'Window', proxy = '<C-w>' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>u', group = 'UI' },
         { '<leader>p', group = 'Project' },
