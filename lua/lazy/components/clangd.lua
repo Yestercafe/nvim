@@ -159,7 +159,7 @@ return {
   },
   {
     'Civitasv/cmake-tools.nvim',
-    lazy = true,
+    ts = { "cpp" },
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
