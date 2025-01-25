@@ -129,5 +129,5 @@ return {
     },
   },
   { "nvim-treesitter/nvim-treesitter-context" },
-  { "rose-pine/neovim", name = "rose-pine" },
+  { "rose-pine/neovim", name = "rose-pine", priority = 1000 },
 }
