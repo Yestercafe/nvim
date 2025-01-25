@@ -7,3 +7,5 @@ local opt = vim.opt
 opt.shiftwidth = 4
 
 vim.g.autoformat = false
+
+vim.g.snacks_animate = false
