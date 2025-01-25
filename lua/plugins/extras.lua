@@ -129,4 +129,5 @@ return {
     },
   },
   { "nvim-treesitter/nvim-treesitter-context" },
+  { "rose-pine/neovim", name = "rose-pine" },
 }
