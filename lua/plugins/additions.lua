@@ -1,6 +1,7 @@
 return {
   { import = "lazyvim.plugins.extras.vscode" },
 
+  { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
   { import = "lazyvim.plugins.extras.coding.yanky" },
 
   { import = "lazyvim.plugins.extras.lang.clangd" },
