@@ -103,6 +103,9 @@ return {
             -- required for Windows users
             use_absolute_path = true,
           },
+          behaviour = {
+            auto_suggestions = false,
+          },
         },
       },
       {
