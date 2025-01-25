@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local github_baseurl = "httsp://github.com/"
+local github_baseurl = "https://github.com/"
 
 if not vim.loop.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
