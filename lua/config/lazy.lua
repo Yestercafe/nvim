@@ -1,39 +1,29 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local github_baseurl = "https://github.com/"
 
-if not vim.loop.fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", github_baseurl .. "folke/lazy.nvim.git", "--branch=stable", lazypath })
+local github_baseurl = "https://github.com/"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = github_baseurl .. "folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    -- import any extras modules here
-    { import = "lazyvim.plugins.extras.vscode" },
-
-    { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
-    { import = "lazyvim.plugins.extras.coding.yanky" },
-
-    { import = "lazyvim.plugins.extras.lang.clangd" },
-    { import = "lazyvim.plugins.extras.lang.cmake" },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.dap.core" },
-
-    { import = "lazyvim.plugins.extras.editor.leap" },
-    { import = "lazyvim.plugins.extras.editor.aerial" },
-    { import = "lazyvim.plugins.extras.editor.harpoon2" },
-    { import = "lazyvim.plugins.extras.editor.mini-files" },
-
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.vscode" },
 
-    { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
 
     { import = "lazyvim.plugins.extras.lang.clangd" },
@@ -42,10 +32,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.dap.core" },
 
-    { import = "lazyvim.plugins.extras.editor.leap" },
-    { import = "lazyvim.plugins.extras.editor.aerial" },
-    { import = "lazyvim.plugins.extras.editor.harpoon2" },
-    { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "plugins" },
   },
   defaults = {
