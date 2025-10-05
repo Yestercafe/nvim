@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "everforest",
     },
   },
   { "echasnovski/mini.comment", enabled = false },
