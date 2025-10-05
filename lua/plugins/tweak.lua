@@ -5,7 +5,7 @@ return {
       colorscheme = "everforest",
     },
   },
-  { "echasnovski/mini.comment", enabled = false },
+  { "nvim-mini/mini.comment", enabled = false },
   {
     "L3MON4D3/LuaSnip",
     opts = {
@@ -14,6 +14,6 @@ return {
       delete_check_events = "TextChanged",
     },
   },
-  { "echasnovski/mini.surround", enabled = false },
-  { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-mini/mini.surround", enabled = false },
+  { "nvim-mini/mini.pairs", enabled = false },
 }
