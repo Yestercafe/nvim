@@ -31,6 +31,16 @@ vim.pack.add({
     src = 'https://github.com/echasnovski/mini.pick',
     version = vim.version.range('>=0.14'),
   },
+  -- 状态栏: mini.statusline，跟随 0.x 的最新版本
+  {
+    src = 'https://github.com/echasnovski/mini.statusline',
+    version = vim.version.range('>=0.14'),
+  },
+  -- 快速跳转: flash.nvim（leap 的继承者），跟随 2.x 的最新版本
+  {
+    src = 'https://github.com/folke/flash.nvim',
+    version = vim.version.range('^2.0'),
+  },
 })
 
 -- 文件管理: oil -----------------------------------------------------------------
@@ -50,6 +60,26 @@ local builtin = require('mini.pick').builtin
 vim.keymap.set('n', '<leader>ff', builtin.files, { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>fg', builtin.grep_live, { desc = 'Live grep' })
+
+-- 状态栏: mini.statusline -------------------------------------------------------
+-- 自带 mode/LSP/诊断信息，零配置
+vim.opt.laststatus = 3 -- 全局状态栏（每窗口一条）
+require('mini.statusline').setup()
+
+-- 快速跳转: flash.nvim -----------------------------------------------------------
+-- 屏幕上任意可见位置，两键跳转：s 向前 / S 向后（leap 风格）
+-- 注意：会占用普通模式的 s（默认是"替换字符"）
+require('flash').setup()
+
+-- flash v2 不自动创建映射，需手动绑定
+-- 用函数形式做 rhs（README 警告：用 :lua 字符串会破坏 dot-repeat）
+local flash = require('flash')
+vim.keymap.set({ 'n', 'x', 'o' }, 's', function()
+  flash.jump()
+end, { desc = 'Flash jump forward' })
+vim.keymap.set({ 'n', 'x', 'o' }, 'S', function()
+  flash.jump({ search = { forward = false } })
+end, { desc = 'Flash jump backward' })
 
 -- 在普通 buffer 中按 `-` 打开当前目录（netrw 风格的目录上跳）
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })

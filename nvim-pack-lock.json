@@ -1,8 +1,18 @@
 {
   "plugins": {
+    "flash.nvim": {
+      "rev": "ec0bf2842189f65f60fd40bf3557cac1029cc932",
+      "src": "https://github.com/folke/flash.nvim",
+      "version": "2.0.0 - 3.0.0"
+    },
     "mini.pick": {
       "rev": "8c1f75f8ddd8c9f75d07ed2ab5718d2c3cb65a66",
       "src": "https://github.com/echasnovski/mini.pick",
+      "version": ">=0.14.0"
+    },
+    "mini.statusline": {
+      "rev": "b5547f44560dae3ccd81f914256fa6f705837022",
+      "src": "https://github.com/echasnovski/mini.statusline",
       "version": ">=0.14.0"
     },
     "oil.nvim": {
