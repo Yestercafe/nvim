@@ -81,6 +81,48 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'S', function()
   flash.jump({ search = { forward = false } })
 end, { desc = 'Flash jump backward' })
 
+-- LSP（nvim 0.12 原生，零插件）---------------------------------------------------
+-- 二进制由系统管理（lua-language-server 已装到 ~/.local/bin）
+vim.lsp.config('*', {
+  on_attach = function(client, bufnr)
+    -- 内置补全：手动开启，按 server 触发字符自动弹出
+    vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+
+    -- 键位（buffer-local，仅 LSP 缓冲生效）
+    local map = function(keys, func, desc)
+      vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
+    end
+    map('gd', vim.lsp.buf.definition, 'go to definition')
+    map('gr', vim.lsp.buf.references, 'references')
+    map('K', vim.lsp.buf.hover, 'hover')
+    map('<leader>la', vim.lsp.buf.code_action, 'code action')
+    map('<leader>lr', vim.lsp.buf.rename, 'rename')
+    map('<leader>ld', vim.diagnostic.open_float, 'diagnostic float')
+    map('[d', vim.diagnostic.goto_prev, 'previous diagnostic')
+    map(']d', vim.diagnostic.goto_next, 'next diagnostic')
+  end,
+})
+
+-- lua_ls 专用：cmd、文件类型、root 标记 + 挂载 nvim runtime 库
+-- （0.12 不内置 server 配置，cmd 等需自给）
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { '.luarc.json', '.git' },
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      diagnostics = { globals = { 'vim' } },
+    },
+  },
+})
+
+-- 启用 server（二进制需在 PATH 中）
+vim.lsp.enable('lua_ls')
+
 -- 在普通 buffer 中按 `-` 打开当前目录（netrw 风格的目录上跳）
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
