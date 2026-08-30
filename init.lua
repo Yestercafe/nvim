@@ -120,8 +120,32 @@ vim.lsp.config('lua_ls', {
   },
 })
 
--- 启用 server（二进制需在 PATH 中）
+-- clangd（C/C++）
+vim.lsp.config('clangd', {
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+  root_markers = { 'compile_commands.json', '.clangd', '.git' },
+})
+
+-- rust_analyzer（Rust）
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_markers = { 'Cargo.toml', '.git' },
+})
+
+-- gopls（Go）
+vim.lsp.config('gopls', {
+  cmd = { 'gopls' },
+  filetypes = { 'go' },
+  root_markers = { 'go.mod', '.git' },
+})
+
+-- 启用 server（二进制需在 PATH 中；缺失时静默失败）
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('gopls')
 
 -- 在普通 buffer 中按 `-` 打开当前目录（netrw 风格的目录上跳）
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
