@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "oil.nvim": {
+      "rev": "17c0a8faaf48298a0c0cfb0d757c0eaee4ff7a32",
+      "src": "https://github.com/stevearc/oil.nvim",
+      "version": "2.0.0 - 3.0.0"
+    }
+  }
+}
