@@ -26,6 +26,11 @@ vim.pack.add({
     src = 'https://github.com/stevearc/oil.nvim',
     version = vim.version.range('^2.0'),
   },
+  -- 模糊查找: mini.pick，跟随 0.x 的最新版本
+  {
+    src = 'https://github.com/echasnovski/mini.pick',
+    version = vim.version.range('>=0.14'),
+  },
 })
 
 -- 文件管理: oil -----------------------------------------------------------------
@@ -36,6 +41,15 @@ require('oil').setup({
     show_hidden = true,         -- 显示隐藏文件
   },
 })
+
+-- 模糊查找: mini.pick ----------------------------------------------------------
+-- 自带模糊匹配引擎；rg/fd/git 只作为候选来源（可选）
+require('mini.pick').setup()
+
+local builtin = require('mini.pick').builtin
+vim.keymap.set('n', '<leader>ff', builtin.files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+vim.keymap.set('n', '<leader>fg', builtin.grep_live, { desc = 'Live grep' })
 
 -- 在普通 buffer 中按 `-` 打开当前目录（netrw 风格的目录上跳）
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
