@@ -41,6 +41,11 @@ vim.pack.add({
     src = 'https://github.com/folke/flash.nvim',
     version = vim.version.range('^2.0'),
   },
+  -- 补全: blink.cmp（nvim-cmp 的继任者），跟随 1.x
+  {
+    src = 'https://github.com/Saghen/blink.cmp',
+    version = vim.version.range('^1.0'),
+  },
 })
 
 -- 文件管理: oil -----------------------------------------------------------------
@@ -85,9 +90,6 @@ end, { desc = 'Flash jump backward' })
 -- 二进制由系统管理（lua-language-server 已装到 ~/.local/bin）
 vim.lsp.config('*', {
   on_attach = function(client, bufnr)
-    -- 内置补全：手动开启，按 server 触发字符自动弹出
-    vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-
     -- 键位（buffer-local，仅 LSP 缓冲生效）
     local map = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
@@ -146,6 +148,23 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('gopls')
+
+-- 补全: blink.cmp ------------------------------------------------------------------
+-- 多来源（lsp/path/buffer/snippets）+ fuzzy 匹配，替代原生 vim.lsp.completion
+-- 键位 preset 'default'：C-space 打开、C-n/C-p 选择、C-y 确认、C-e 隐藏、C-k 签名帮助
+-- fuzzy 用 Lua 实现：避免 Rust 预编译二进制的下载/构建步骤（vim.pack 无 build 钩子）
+require('blink.cmp').setup({
+  keymap = { preset = 'default' },
+  completion = {
+    documentation = { auto_show = false },
+  },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+  },
+  fuzzy = {
+    implementation = 'lua',
+  },
+})
 
 -- 在普通 buffer 中按 `-` 打开当前目录（netrw 风格的目录上跳）
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })

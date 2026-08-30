@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/Saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
     "flash.nvim": {
       "rev": "ec0bf2842189f65f60fd40bf3557cac1029cc932",
       "src": "https://github.com/folke/flash.nvim",
