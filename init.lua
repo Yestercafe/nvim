@@ -98,8 +98,8 @@ vim.lsp.config('*', {
     map('<leader>la', vim.lsp.buf.code_action, 'code action')
     map('<leader>lr', vim.lsp.buf.rename, 'rename')
     map('<leader>ld', vim.diagnostic.open_float, 'diagnostic float')
-    map('[d', vim.diagnostic.goto_prev, 'previous diagnostic')
-    map(']d', vim.diagnostic.goto_next, 'next diagnostic')
+    map('[d', function() vim.diagnostic.jump({ count = -1 }) end, 'previous diagnostic')
+    map(']d', function() vim.diagnostic.jump({ count = 1 }) end, 'next diagnostic')
   end,
 })
 
