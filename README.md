@@ -75,3 +75,11 @@ LSP server 二进制需另行安装（示例，按发行版/平台调整）：
 init.lua              -- 全部配置（~230 行，含注释）
 nvim-pack-lock.json   -- 插件锁定状态
 ```
+
+## 版本
+
+本仓库为多配置共存结构（各配置在不同分支），故版本 tag 带前缀：`chibi-vX.Y.Z`。
+
+- 小改动/新增插件 → bump patch（`chibi-v0.1.1`）
+- 破坏性变更 → bump minor（`chibi-v0.2.0`）
+- 其他配置若打版，使用各自前缀
