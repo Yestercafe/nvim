@@ -1,4 +1,5 @@
--- Minimal Neovim config (nvim 0.12.x)
+-- chibi: minimal Neovim config (nvim 0.12.x) -------------------------------
+-- 原生优先，单文件；插件用内置 vim.pack 管理
 -- 基础选项 ------------------------------------------------------------------
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -208,6 +209,7 @@ end
 local starter = require('mini.starter')
 starter.setup({
   autoopen = false, -- 由下方 VimEnter 统一处理
+  header = 'chibi\nminimal nvim · vim.pack',
   items = {
     -- “恢复上次会话”——仅当存在会话文件时出现
     function()
