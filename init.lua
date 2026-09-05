@@ -188,12 +188,38 @@ vim.keymap.set('n', '<leader>w2', '<CMD>split<CR>', { desc = 'Split window below
 vim.keymap.set('n', '<leader>w3', '<CMD>vsplit<CR>', { desc = 'Split window right (C-x 3)' })
 vim.keymap.set('n', '<leader>w0', '<CMD>close<CR>', { desc = 'Close window (C-x 0)' })
 
--- 启动页: mini.starter -----------------------------------------------------------
--- 裸 nvim 且无历史会话时展示；autoopen 关闭，由会话 VimEnter 统一决策
+-- 启动页与会话 -------------------------------------------------------------------
+-- 裸 nvim 总是进启动页；恢复上次会话是启动页里的一个选项
+
+-- 会话文件位置（state 目录）
+local session_dir = vim.fs.joinpath(vim.fn.stdpath('state'), 'session')
+local session_file = vim.fs.joinpath(session_dir, 'last.vim')
+
+-- 恢复上次会话（供启动页选项与测试复用）
+local function resume_session()
+  -- 先关掉启动页 buffer，避免 source 会话时与它打架
+  local buf = vim.api.nvim_get_current_buf()
+  if vim.bo[buf].filetype == 'ministarter' then
+    pcall(require('mini.starter').close, buf)
+  end
+  pcall(vim.cmd.source, { args = { session_file } })
+end
+
 local starter = require('mini.starter')
 starter.setup({
-  autoopen = false,
+  autoopen = false, -- 由下方 VimEnter 统一处理
   items = {
+    -- “恢复上次会话”——仅当存在会话文件时出现
+    function()
+      if vim.fn.filereadable(session_file) ~= 1 then return {} end
+      return {
+        {
+          name = 'Resume last session',
+          action = resume_session,
+          section = 'Sessions',
+        },
+      }
+    end,
     -- 最近文件（来自 v:oldfiles）
     starter.sections.recent_files(8, false),
     -- 快捷动作：新 buffer / 退出
@@ -202,14 +228,9 @@ starter.setup({
   content_hooks = {
     starter.gen_hook.aligning('center', 'center'),
     starter.gen_hook.adding_bullet(),
-    starter.gen_hook.indexing('all', { 'Builtin actions' }),
+    starter.gen_hook.indexing('all', { 'Builtin actions', 'Sessions' }),
   },
 })
-
--- 会话恢复（原生 mksession，零插件）------------------------------------------------
--- 退出时自动保存布局到 state 目录，下次无参数启动时自动恢复
-local session_dir = vim.fs.joinpath(vim.fn.stdpath('state'), 'session')
-local session_file = vim.fs.joinpath(session_dir, 'last.vim')
 
 -- 保存内容：窗口/缓冲区/目录/折叠等
 -- 刻意不含 terminal：避免恢复时自动重开终端里的 agent shell
@@ -229,23 +250,29 @@ end
 vim.api.nvim_create_autocmd('VimLeavePre', {
   callback = function()
     cleanup_unrestorable()
+    -- 若只有启动页、没打开过真实文件，则不写会话（避免覆盖上次的好会话）
+    local has_real_buffer = false
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= '' and not name:match('^ministarter://') then
+        has_real_buffer = true
+        break
+      end
+    end
+    if not has_real_buffer then return end
     vim.fn.mkdir(session_dir, 'p')
     vim.cmd.mksession({ bang = true, args = { session_file }, mods = { emsg_silent = true } })
   end,
 })
 
--- 裸 nvim 启动决策：有历史会话 → 恢复布局；无会话 → 展示启动页
+-- 裸 nvim（无参数）→ 总是展示启动页
 vim.api.nvim_create_autocmd('VimEnter', {
   nested = true,
   callback = function()
     if vim.fn.argc() > 0 then return end
-    if vim.fn.filereadable(session_file) == 1 then
-      pcall(vim.cmd.source, { args = { session_file } })
-    else
-      vim.schedule(function()
-        starter.open()
-      end)
-    end
+    vim.schedule(function()
+      starter.open()
+    end)
   end,
 })
 
