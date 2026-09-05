@@ -183,6 +183,43 @@ vim.keymap.set('n', '<leader>w2', '<CMD>split<CR>', { desc = 'Split window below
 vim.keymap.set('n', '<leader>w3', '<CMD>vsplit<CR>', { desc = 'Split window right (C-x 3)' })
 vim.keymap.set('n', '<leader>w0', '<CMD>close<CR>', { desc = 'Close window (C-x 0)' })
 
+-- 会话恢复（原生 mksession，零插件）------------------------------------------------
+-- 退出时自动保存布局到 state 目录，下次无参数启动时自动恢复
+local session_dir = vim.fs.joinpath(vim.fn.stdpath('state'), 'session')
+local session_file = vim.fs.joinpath(session_dir, 'last.vim')
+
+-- 保存内容：窗口/缓冲区/目录/折叠等
+-- 刻意不含 terminal：避免恢复时自动重开终端里的 agent shell
+vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos'
+
+-- 剔除不可恢复的 buffer（oil 的虚拟命名、terminal、quickfix 恢复时会报错）
+local function cleanup_unrestorable()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    local buftype = vim.bo[buf].buftype
+    local name = vim.api.nvim_buf_get_name(buf)
+    if buftype == 'terminal' or buftype == 'quickfix' or name:match('^oil://') then
+      pcall(vim.api.nvim_buf_delete, buf, { force = true })
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  callback = function()
+    cleanup_unrestorable()
+    vim.fn.mkdir(session_dir, 'p')
+    vim.cmd.mksession({ bang = true, args = { session_file }, mods = { emsg_silent = true } })
+  end,
+})
+
+-- 无文件参数启动（如直接敲 nvim）时自动恢复上次会话
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if vim.fn.argc() == 0 and vim.fn.filereadable(session_file) == 1 then
+      pcall(vim.cmd.source, { args = { session_file } })
+    end
+  end,
+})
+
 -- 插件维护命令提示 ----------------------------------------------------------
 -- 更新全部插件:        :lua vim.pack.update()
 -- 查看插件状态:        :lua vim.pack.get()
