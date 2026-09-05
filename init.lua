@@ -46,6 +46,11 @@ vim.pack.add({
     src = 'https://github.com/Saghen/blink.cmp',
     version = vim.version.range('^1.0'),
   },
+  -- 启动页: mini.starter，跟随 0.x 的最新版本
+  {
+    src = 'https://github.com/echasnovski/mini.starter',
+    version = vim.version.range('>=0.14'),
+  },
 })
 
 -- 文件管理: oil -----------------------------------------------------------------
@@ -183,6 +188,24 @@ vim.keymap.set('n', '<leader>w2', '<CMD>split<CR>', { desc = 'Split window below
 vim.keymap.set('n', '<leader>w3', '<CMD>vsplit<CR>', { desc = 'Split window right (C-x 3)' })
 vim.keymap.set('n', '<leader>w0', '<CMD>close<CR>', { desc = 'Close window (C-x 0)' })
 
+-- 启动页: mini.starter -----------------------------------------------------------
+-- 裸 nvim 且无历史会话时展示；autoopen 关闭，由会话 VimEnter 统一决策
+local starter = require('mini.starter')
+starter.setup({
+  autoopen = false,
+  items = {
+    -- 最近文件（来自 v:oldfiles）
+    starter.sections.recent_files(8, false),
+    -- 快捷动作：新 buffer / 退出
+    starter.sections.builtin_actions(),
+  },
+  content_hooks = {
+    starter.gen_hook.aligning('center', 'center'),
+    starter.gen_hook.adding_bullet(),
+    starter.gen_hook.indexing('all', { 'Builtin actions' }),
+  },
+})
+
 -- 会话恢复（原生 mksession，零插件）------------------------------------------------
 -- 退出时自动保存布局到 state 目录，下次无参数启动时自动恢复
 local session_dir = vim.fs.joinpath(vim.fn.stdpath('state'), 'session')
@@ -211,11 +234,17 @@ vim.api.nvim_create_autocmd('VimLeavePre', {
   end,
 })
 
--- 无文件参数启动（如直接敲 nvim）时自动恢复上次会话
+-- 裸 nvim 启动决策：有历史会话 → 恢复布局；无会话 → 展示启动页
 vim.api.nvim_create_autocmd('VimEnter', {
+  nested = true,
   callback = function()
-    if vim.fn.argc() == 0 and vim.fn.filereadable(session_file) == 1 then
+    if vim.fn.argc() > 0 then return end
+    if vim.fn.filereadable(session_file) == 1 then
       pcall(vim.cmd.source, { args = { session_file } })
+    else
+      vim.schedule(function()
+        starter.open()
+      end)
     end
   end,
 })

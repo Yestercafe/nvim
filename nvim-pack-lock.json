@@ -15,6 +15,11 @@
       "src": "https://github.com/echasnovski/mini.pick",
       "version": ">=0.14.0"
     },
+    "mini.starter": {
+      "rev": "0575c96206d63fd98d7f786df78dc225bf847d95",
+      "src": "https://github.com/echasnovski/mini.starter",
+      "version": ">=0.14.0"
+    },
     "mini.statusline": {
       "rev": "b5547f44560dae3ccd81f914256fa6f705837022",
       "src": "https://github.com/echasnovski/mini.statusline",
