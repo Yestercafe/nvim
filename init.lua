@@ -210,12 +210,11 @@ starter.setup({
   autoopen = false, -- 由下方 VimEnter 统一处理
   items = {
     -- “恢复上次会话”——仅当存在会话文件时出现
-    -- 名称以 s 开头（session），使前缀筛选键为 s
     function()
       if vim.fn.filereadable(session_file) ~= 1 then return {} end
       return {
         {
-          name = 'Session: resume last',
+          name = 'Resume last session',
           action = resume_session,
           section = 'Sessions',
         },
